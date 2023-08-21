@@ -1,12 +1,12 @@
 const bcrypt = require("bcryptjs");
 const token = require("jsonwebtoken");
-const AlunosModel = require("../models/userModel");
+const AllModels= require("../models/AllModels");
 
 const Register = async (req, res) => {
   try {
     const file = req.file;
 
-    const Aluno = await AlunosModel.findOne({
+    const Aluno = await AllModels.AlunoModel.findOne({
       where: { sobrenome: req.body.sobrenome },
     });
 
@@ -19,7 +19,7 @@ const Register = async (req, res) => {
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(req.body.senha, salt);
 
-    const aluno = await AlunosModel.create({
+    const aluno = await AllModels.AlunoModel.create({
       nome: req.body.nome,
       sobrenome: req.body.sobrenome,
       sala: req.body.sala,
@@ -34,7 +34,7 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
-    const Aluno = await AlunosModel.findOne({
+    const Aluno = await AllModels.AlunoModel.findOne({
       where: { sobrenome: req.body.sobrenome },
     });
 
@@ -61,6 +61,20 @@ const Login = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
+const Logout = (req, res) => {
+  try {
+    res
+      .clearCookie("Acess_Token", {
+        secure: true,
+        sameSite: "none",
+      })
+      .status(200)
+      .json({ message: "Deslogado com sucesso" });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
 
 exports.Register = Register;
 exports.Login = Login;
+exports.Logout = Logout;
