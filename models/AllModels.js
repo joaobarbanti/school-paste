@@ -55,10 +55,32 @@ const SalaModel = db.define("salas", {
   },
 });
 
+const EnterinSala = db.define("entersala", {
+  salaid: {
+    type: Sequelize.INTEGER.UNSIGNED,
+    allowNull: false,
+  },
+  userid: {
+    type: Sequelize.INTEGER.UNSIGNED,
+    allowNull: false,
+  },
+});
+
 SalaModel.belongsTo(AlunoModel, {
   constraint: true,
   foreignKey: "admid",
 });
 
+EnterinSala.belongsTo(SalaModel, {
+  constraint: true,
+  foreignKey: "salaid",
+});
+
+EnterinSala.belongsTo(AlunoModel, {
+  constraint: true,
+  foreignKey: "userid",
+});
+
 exports.AlunoModel = AlunoModel;
 exports.SalaModel = SalaModel;
+exports.EnterinSala = EnterinSala

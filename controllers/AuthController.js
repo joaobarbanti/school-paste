@@ -26,7 +26,8 @@ const Register = async (req, res) => {
       foto: file.path,
       senha: hash,
     });
-    res.status(200).json(aluno);
+    const savedaluno = await aluno.save()
+    res.status(200).json(savedaluno);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }

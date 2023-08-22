@@ -14,9 +14,7 @@ app.use(CookieParser());
 app.use("/auth", RouteAuthAluno);
 app.use("/salas", RouteSalas);
 
-
- db.sync({ force: true });
-
+db.sync({ force: true });
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Servidor Rodando Na Porta ${process.env.PORT || 3000}`);
