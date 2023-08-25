@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const token = require("jsonwebtoken");
-const AllModels= require("../models/AllModels");
+const AllModels = require("../models/AllModels")
 
 const Register = async (req, res) => {
   try {
@@ -26,7 +26,7 @@ const Register = async (req, res) => {
       foto: file.path,
       senha: hash,
     });
-    const savedaluno = await aluno.save()
+    const savedaluno = await aluno.save();
     res.status(200).json(savedaluno);
   } catch (err) {
     return res.status(500).json({ message: err.message });

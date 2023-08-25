@@ -39,11 +39,11 @@ const SalaModel = db.define("salas", {
   },
   nome: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   descricao: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   foto: {
     type: Sequelize.STRING,
@@ -66,6 +66,33 @@ const EnterinSala = db.define("entersala", {
   },
 });
 
+const documents = db.define("documents", {
+  titulo: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  descricao: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  arquivo: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  userid: {
+    type: Sequelize.INTEGER.UNSIGNED,
+    allowNull: false,
+  },
+  salaid: {
+    type: Sequelize.INTEGER.UNSIGNED,
+    allowNull: false,
+  },
+  aula: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+});
+
 SalaModel.belongsTo(AlunoModel, {
   constraint: true,
   foreignKey: "admid",
@@ -80,7 +107,16 @@ EnterinSala.belongsTo(AlunoModel, {
   constraint: true,
   foreignKey: "userid",
 });
+documents.belongsTo(AlunoModel, {
+  constraint: true,
+  foreignKey: "userid",
+});
+documents.belongsTo(SalaModel, {
+  constraint: true,
+  foreignKey: "salaid",
+});
 
 exports.AlunoModel = AlunoModel;
 exports.SalaModel = SalaModel;
-exports.EnterinSala = EnterinSala
+exports.EnterinSala = EnterinSala;
+exports.documents = documents;
