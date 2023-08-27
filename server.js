@@ -5,6 +5,7 @@ const CookieParser = require("cookie-parser");
 require("dotenv").config();
 const RouteAuthAluno = require("./routes/AuthRoute");
 const RouteSalas = require("./routes/SalasRoute");
+const RouteProfile = require("./routes/ProfileRoute");
 const db = require("./db");
 
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(CookieParser());
 
 app.use("/auth", RouteAuthAluno);
 app.use("/salas", RouteSalas);
+app.use("/perfil", RouteProfile);
 
 const start = async () => {
   await db.sync({ force: true });
