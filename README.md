@@ -1,7 +1,7 @@
 ##  📂 School-Paste
 
 ### Plataforma com o intuito de permitir o compartilhamento de arquivos entre alunos em salas de aula. A plataforma foi desenvolvida utilizando principalmente o banco de dados MySQL, Nodejs para controle do backend, jsonwebtoken para autorização e autenticação e outras diversas bibliotecas.  
-## O aluno realiza seu cadastro, após isso pode entrar ou criar uma sala de aula e assim outros alunos podem entrar na mesma, dentro da sala os alunos podem compartilhar arquivos de aulas entre si como pdfs e etc, esees arquivos podem ser filtrados por aula para maior facilidade em encontrá-los. Cada aluno pode ver em qual salas está dentro e quais arquivos já mandou em cada sala 
+## O aluno realiza seu cadastro, após isso pode entrar ou criar uma sala de aula e assim outros alunos podem entrar na mesma, dentro da sala os alunos podem compartilhar arquivos de aulas entre si como pdfs e etc, esses arquivos podem ser filtrados por aula para maior facilidade em encontrá-los. Cada aluno pode ver em quais salas está dentro e quais arquivos já mandou em cada sala 
 
 
 ## 💻 Tecnologias Usadas
